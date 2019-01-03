@@ -16,4 +16,9 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BookMenagement.DAL.Interfaces\BookMenagement.DAL.Interfaces.csproj" />
+    <ProjectReference Include="..\BookMenagement.Models\BookMenagement.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
