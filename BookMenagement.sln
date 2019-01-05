@@ -7,7 +7,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookMenagement.Api", "BookM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookMenagement.DAL", "BookMenagement.Models\BookMenagement.DAL.csproj", "{5755F430-154C-42F7-9F7E-2205B9067679}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookMenagement.DAL.Interfaces", "BookMenagement.DAL.Interfaces\BookMenagement.DAL.Interfaces.csproj", "{9B803264-7C04-489A-956D-2E3BAA8CDF0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookMenagement.DAL.Interfaces", "BookMenagement.DAL.Interfaces\BookMenagement.DAL.Interfaces.csproj", "{9B803264-7C04-489A-956D-2E3BAA8CDF0F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{0CF04B74-7151-493A-924A-3232BAD51F9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BLL", "BLL", "{7E1732AC-531E-41CB-9E10-197932119BAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookMenagement.BLL.Interfaces", "BookMenagement.Bll.Interfaces\BookMenagement.BLL.Interfaces.csproj", "{482FE54D-1D56-499F-A775-BC69613876B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookMenagement.BLL", "BookMenagement.BLL\BookMenagement.BLL.csproj", "{219D1611-A49A-479C-8022-2363B22CFB83}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F984FDB2-7055-4778-971C-40B19E5AA4AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{02000A8F-4A34-47ED-80A0-C02D97E51A1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookMenagement.Model", "BookMenagement.Model\BookMenagement.Model.csproj", "{28C3B30C-4B46-4316-B9FE-77A5DFC1EC73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookMenagement.Logging", "BookMenagement.Logging\BookMenagement.Logging.csproj", "{F4B35ACA-8439-46AF-AB08-27A5F9234A25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +43,33 @@ Global
 		{9B803264-7C04-489A-956D-2E3BAA8CDF0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B803264-7C04-489A-956D-2E3BAA8CDF0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B803264-7C04-489A-956D-2E3BAA8CDF0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{482FE54D-1D56-499F-A775-BC69613876B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{482FE54D-1D56-499F-A775-BC69613876B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{482FE54D-1D56-499F-A775-BC69613876B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{482FE54D-1D56-499F-A775-BC69613876B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{219D1611-A49A-479C-8022-2363B22CFB83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{219D1611-A49A-479C-8022-2363B22CFB83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{219D1611-A49A-479C-8022-2363B22CFB83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{219D1611-A49A-479C-8022-2363B22CFB83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28C3B30C-4B46-4316-B9FE-77A5DFC1EC73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28C3B30C-4B46-4316-B9FE-77A5DFC1EC73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28C3B30C-4B46-4316-B9FE-77A5DFC1EC73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28C3B30C-4B46-4316-B9FE-77A5DFC1EC73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4B35ACA-8439-46AF-AB08-27A5F9234A25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4B35ACA-8439-46AF-AB08-27A5F9234A25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4B35ACA-8439-46AF-AB08-27A5F9234A25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4B35ACA-8439-46AF-AB08-27A5F9234A25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5755F430-154C-42F7-9F7E-2205B9067679} = {0CF04B74-7151-493A-924A-3232BAD51F9E}
+		{9B803264-7C04-489A-956D-2E3BAA8CDF0F} = {0CF04B74-7151-493A-924A-3232BAD51F9E}
+		{482FE54D-1D56-499F-A775-BC69613876B6} = {7E1732AC-531E-41CB-9E10-197932119BAB}
+		{219D1611-A49A-479C-8022-2363B22CFB83} = {7E1732AC-531E-41CB-9E10-197932119BAB}
+		{28C3B30C-4B46-4316-B9FE-77A5DFC1EC73} = {02000A8F-4A34-47ED-80A0-C02D97E51A1F}
+		{F4B35ACA-8439-46AF-AB08-27A5F9234A25} = {02000A8F-4A34-47ED-80A0-C02D97E51A1F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E368D9AD-8D45-4286-BBF4-5B19F23583B5}

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BookMenagement.Bll.Interfaces\BookMenagement.BLL.Interfaces.csproj" />
+    <ProjectReference Include="..\BookMenagement.DAL.Interfaces\BookMenagement.DAL.Interfaces.csproj" />
+    <ProjectReference Include="..\BookMenagement.Logging\BookMenagement.Logging.csproj" />
+    <ProjectReference Include="..\BookMenagement.Models\BookMenagement.DAL.csproj" />
+    <ProjectReference Include="..\BookMenagement.Model\BookMenagement.Model.csproj" />
+  </ItemGroup>
+
+</Project>
