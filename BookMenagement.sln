@@ -13,17 +13,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{0CF04B74-715
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BLL", "BLL", "{7E1732AC-531E-41CB-9E10-197932119BAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookMenagement.BLL.Interfaces", "BookMenagement.Bll.Interfaces\BookMenagement.BLL.Interfaces.csproj", "{482FE54D-1D56-499F-A775-BC69613876B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookMenagement.BLL.Interfaces", "BookMenagement.Bll.Interfaces\BookMenagement.BLL.Interfaces.csproj", "{482FE54D-1D56-499F-A775-BC69613876B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookMenagement.BLL", "BookMenagement.BLL\BookMenagement.BLL.csproj", "{219D1611-A49A-479C-8022-2363B22CFB83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookMenagement.BLL", "BookMenagement.BLL\BookMenagement.BLL.csproj", "{219D1611-A49A-479C-8022-2363B22CFB83}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F984FDB2-7055-4778-971C-40B19E5AA4AB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{02000A8F-4A34-47ED-80A0-C02D97E51A1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookMenagement.Model", "BookMenagement.Model\BookMenagement.Model.csproj", "{28C3B30C-4B46-4316-B9FE-77A5DFC1EC73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookMenagement.Model", "BookMenagement.Model\BookMenagement.Model.csproj", "{28C3B30C-4B46-4316-B9FE-77A5DFC1EC73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookMenagement.Logging", "BookMenagement.Logging\BookMenagement.Logging.csproj", "{F4B35ACA-8439-46AF-AB08-27A5F9234A25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookMenagement.Logging", "BookMenagement.Logging\BookMenagement.Logging.csproj", "{F4B35ACA-8439-46AF-AB08-27A5F9234A25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
