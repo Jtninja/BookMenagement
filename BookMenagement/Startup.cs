@@ -38,7 +38,8 @@ namespace BookMenagement
             services.AddMvc();
             var connection = @"Server=.\\;Initial Catalog=BookMenagement;Integrated Security=True;Trusted_Connection=True";
             services.AddDbContext<BookMenagementContext>();
-                //(options => options.UseSqlServer(connection));
+            //(options => options.UseSqlServer(connection));
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,7 +50,13 @@ namespace BookMenagement
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(builder => builder
+                                     .AllowAnyOrigin()
+                                     .AllowAnyMethod()
+                                     .AllowAnyHeader()
+                                     .AllowCredentials());
             app.UseMvc();
+
         }
     }
 }
