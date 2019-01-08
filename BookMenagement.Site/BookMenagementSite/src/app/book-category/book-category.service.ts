@@ -48,6 +48,15 @@ export class BookCategoryService {
       );
   }
 
+  updateBookCategory(product: BookCategory): Observable<BookCategory> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.put<BookCategory>(this.bookCategoryServerUrl, product, { headers: headers })
+      .pipe(
+        tap(data => console.log('updateProduct: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+  }
+
   deleteBookCategory(id: number): Observable<{}> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const url = `${this.bookCategoryServerUrl}/${id}`;

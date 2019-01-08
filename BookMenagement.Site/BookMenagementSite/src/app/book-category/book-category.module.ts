@@ -20,13 +20,7 @@ import { from } from 'rxjs';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-     AppRoutingModule
-    // RouterModule.forChild([
-    //   {path:'bookCategory',component:BookCategoryListComponent},
-    //   {path:'bookCategory/:id',component:BookCategoryDetailComponent},
-    //   {path:'bookCategory/:id/edit',component:BookCategoryEditComponent}
-
-    // ])
+    AppRoutingModule
   ]
 })
 export class BookCategoryModule { }

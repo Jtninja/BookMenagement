@@ -1,3 +1,77 @@
-<p>
-  book-category-edit works!
-</p>
+<div class="card">
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+
+  <div class="card-body">
+    <form novalidate
+          (ngSubmit)="saveCategory()"
+          [formGroupName]="CategoryForm">
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="categoryNameId">Book Category Name</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="categoryNameId"
+                 type="text"
+                 placeholder="Name (required)"
+                 formControlName="categoryName"
+                 [ngClass]="{'is-invalid': displayMessage.categoryName }" />
+          <span class="invalid-feedback">
+           
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="categoryNameId">Book Category Code</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="categoryNameId"
+                 type="text"
+                 placeholder="Code (required)"
+                 formControlName="categoryName"
+                 [ngClass]="{'is-invalid': displayMessage.categoryName}" />
+          <span class="invalid-feedback" *ngIf="">
+            {{displayMessage.categoryName}}
+          </span>
+        </div>
+      </div>
+
+      
+
+      <div class="form-group row mb-2">
+        <div class="offset-md-2 col-md-4">
+          <button class="btn btn-primary mr-3"
+                  style="width:80px;"
+                  type="submit"
+                  [title]="CategoryForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                  [disabled]="!CategoryForm.valid">
+            Save
+          </button>
+          <button class="btn btn-outline-secondary mr-3"
+                  style="width:80px;"
+                  type="button"
+                  title="Cancel your edits"
+                  [routerLink]="['/bookCategory']">
+            Cancel
+          </button>
+          <button class="btn btn-outline-warning"
+                  style="width:80px"
+                  type="button"
+                  title="Delete this Category"
+                  (click)="deleteCategory()">
+            Delete
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+ Valid: {{CategoryForm.valid}}
+
+  <div class="alert alert-danger"
+       *ngIf="errorMessage">{{errorMessage}}
+  </div>
+</div>

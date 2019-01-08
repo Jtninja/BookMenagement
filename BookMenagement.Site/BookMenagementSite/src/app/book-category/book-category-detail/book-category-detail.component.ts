@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { BookCategoryService } from '../book-category.service';
+import { BookCategory } from '../book-category';
+
 
 @Component({
   selector: 'app-book-category-detail',
@@ -7,9 +12,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookCategoryDetailComponent implements OnInit {
 
-  constructor() { }
+  errorMessage = '';
+  pageTitle:"BM-Book Category Details";
+  private bookCat :BookCategory;
+  
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private bookCategoryService: BookCategoryService) { }
 
   ngOnInit() {
+      const param=this.route.snapshot.paramMap.get('id');
+      if(param){
+          const id=+param;
+          this.getBookCategory(id)
+      }
+
+      
+  }
+
+  getBookCategory(id:number):void{
+    this.bookCategoryService.getBookCategoryById(id).subscribe(
+      r=>this.bookCat=r,
+      error => this.errorMessage = <any>error
+    )
+  }
+  onBack():void
+  {
+    this.router.navigate(['/bookCategory']);
   }
 
 }
