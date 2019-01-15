@@ -6,7 +6,7 @@
   <div class="card-body">
     <form novalidate
           (ngSubmit)="saveCategory()"
-          [formGroupName]="CategoryForm">
+          [formGroup]="CategoryForm">
 
       <div class="form-group row mb-2">
         <label class="col-md-2 col-form-label"
@@ -17,26 +17,43 @@
                  type="text"
                  placeholder="Name (required)"
                  formControlName="categoryName"
-                 [ngClass]="{'is-invalid': displayMessage.categoryName }" />
+                 [ngClass]="{'is-invalid':  
+                 (CategoryForm.get('categoryName').touched || CategoryForm.get('categoryName').dirty)
+                  && !CategoryForm.get('categoryName').valid }" />
           <span class="invalid-feedback">
-           
+            
+              <span *ngIf="CategoryForm.get('categoryName').errors?.required">
+                Please enter category Name
+              </span>
+              <span *ngIf="CategoryForm.get('categoryName').errors?.minlength">
+                The CategoryName  must be longer than 3 characters.
+              </span>
+              <span *ngIf="CategoryForm.get('categoryName').errors?.maxlength">
+                The CategoryName  must not be longer than 150 characters.
+              </span>
+            
           </span>
         </div>
       </div>
 
       <div class="form-group row mb-2">
         <label class="col-md-2 col-form-label"
-               for="categoryNameId">Book Category Code</label>
+               for="categoryCodeId">Book Category Code</label>
         <div class="col-md-8">
           <input class="form-control"
-                 id="categoryNameId"
+                 id="categoryCodeId"
                  type="text"
                  placeholder="Code (required)"
-                 formControlName="categoryName"
-                 [ngClass]="{'is-invalid': displayMessage.categoryName}" />
-          <span class="invalid-feedback" *ngIf="">
-            {{displayMessage.categoryName}}
-          </span>
+                 formControlName="categoryCode"
+                 [ngClass]="{'is-invalid':  
+                 (CategoryForm.get('categoryCode').touched || CategoryForm.get('categoryCode').dirty)
+                  && !CategoryForm.get('categoryCode').valid }" />
+
+                  <span class="invalid-feedback">
+                    <span *ngIf="CategoryForm.get('categoryCode').errors?.required">
+                      Please enter category Code
+                    </span>
+                </span>
         </div>
       </div>
 

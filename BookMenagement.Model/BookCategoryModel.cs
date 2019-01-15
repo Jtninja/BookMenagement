@@ -13,4 +13,16 @@ namespace BookMenagement.Model
         [StringLength(100)]
         public string Name { get; set; }
     }
+
+    public class BookCategoryModelRequest
+    {
+        [Key]
+        public int id { get; set; }
+        [StringLength(2)]
+        [Required]
+        public string code { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string name { get; set; }
+    }
 }

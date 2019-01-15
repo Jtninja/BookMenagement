@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { BookCategory } from '../book-category';
+import { BookCategory, BookCategoryModel } from '../book-category';
 import { BookCategoryService } from '../book-category.service';
 
 @Component({
@@ -107,8 +107,10 @@ export class BookCategoryEditComponent implements OnInit, AfterViewInit, OnDestr
   saveCategory(): void {
     if (this.CategoryForm.valid) {
       if (this.CategoryForm.dirty) {
-        const p = { ...this.category, ...this.CategoryForm.value };
-
+       let p :BookCategory= new BookCategoryModel();// { ...this.category, ...this.CategoryForm.value };
+          p.code=this.CategoryForm.get('categoryCode').value;
+          p.name=this.CategoryForm.get('categoryName').value;
+          p.id=this.category.id;
         if (p.id === 0) {
           this.categoryService.createBookCategory(p)
             .subscribe(
@@ -116,6 +118,7 @@ export class BookCategoryEditComponent implements OnInit, AfterViewInit, OnDestr
               (error: any) => this.errorMessage = <any>error
             );
         } else {
+
           this.categoryService.updateBookCategory(p)
             .subscribe(
               () => this.onSaveComplete(),

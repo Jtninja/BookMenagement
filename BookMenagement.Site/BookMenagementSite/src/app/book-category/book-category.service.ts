@@ -5,17 +5,16 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 
 import {BookCategory} from './book-category'
-
+import { environment } from 'src/environments/environment';
+environment
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookCategoryService {
-  private bookCategoryServerUrl:string="http://localhost:1956/api/bookCategory";
+  private bookCategoryServerUrl:string=environment.serverUrl+"/bookCategory";
   
   constructor(private http: HttpClient) { } 
-
-
   
   getBookCategory(): Observable<BookCategory[]> {
     return this.http.get<BookCategory[]>(this.bookCategoryServerUrl)
