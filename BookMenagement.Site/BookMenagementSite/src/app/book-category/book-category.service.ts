@@ -39,7 +39,7 @@ export class BookCategoryService {
   
   createBookCategory(product: BookCategory): Observable<BookCategory> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    product.id = null;
+    product.id = 0;
     return this.http.post<BookCategory>(this.bookCategoryServerUrl, product, { headers: headers })
       .pipe(
         tap(data => console.log('createProduct: ' + JSON.stringify(data))),
@@ -77,7 +77,7 @@ export class BookCategoryService {
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
-      errorMessage = `Backend returned code ${err.status}: ${err.body.error}`;
+      errorMessage = `Backend returned code ${err.status}: ${err.error.Code}`;
     }
     console.error(err);
     return throwError(errorMessage);

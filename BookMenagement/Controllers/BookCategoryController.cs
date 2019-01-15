@@ -66,12 +66,16 @@ namespace BookMenagement.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody]BookCategoryModelRequest model)
+        public IActionResult Create([FromBody]BookCategoryModel req)
         {
             try
             {
-                _service.Create(null);
-                return Created("",model);
+                if (ModelState.IsValid)
+                {
+                    _service.Create(req);
+                    return Created("", req);
+                }
+                return BadRequest(ModelState);
             }
             catch (Exception ex)
             {
