@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace BookMenagement.DAL.Interfaces
 {
@@ -11,6 +13,9 @@ namespace BookMenagement.DAL.Interfaces
         void Update(T obj);
         void Delete(Object id);
         void Save();
+
+        IQueryable<T> Where(Expression<Func<T, bool>> predicate);
+        bool Any(Expression<Func<T, bool>> predicate);
     }
 }
 

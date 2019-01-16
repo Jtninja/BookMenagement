@@ -11,6 +11,5 @@ namespace BookMenagement.Bll.Interfaces
         void Create(BookCategoryModel sc);
         void Update(BookCategoryModel sc);
         void Delete(int id);
-
     }
 }

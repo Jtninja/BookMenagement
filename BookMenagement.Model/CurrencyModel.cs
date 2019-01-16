@@ -17,4 +17,7 @@ namespace BookMenagement.Model
         [Required]
         public decimal DefaultRatio { get; set; }
     }
+
+
+
 }

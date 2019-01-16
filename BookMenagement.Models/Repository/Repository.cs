@@ -6,6 +6,7 @@ using BookMenagement.DAL.DBContext;
 using Microsoft.EntityFrameworkCore.Migrations;
 using BookMenagement.DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace BookMenagement.DAL.Repository
 {
@@ -64,5 +65,15 @@ namespace BookMenagement.DAL.Repository
                 this.db = null;
             }
         }
+
+        public IQueryable<T> where(Expression<Func<T,bool>> predicate)
+        {
+            return this.dbSet.Where(predicate);
+        }
+        public bool Any(Expression<Func<T, bool>> predicate)
+        {
+            return this.dbSet.Any(predicate);
+        }
+
     }
 }
