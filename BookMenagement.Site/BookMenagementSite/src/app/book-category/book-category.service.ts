@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of, throwError, never, empty } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 
 import {BookCategory} from './book-category'
 import { environment } from 'src/environments/environment';
-environment
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ environment
 export class BookCategoryService {
   private bookCategoryServerUrl:string=environment.serverUrl+"/bookCategory";
   
-  constructor(private http: HttpClient) { } 
+  constructor(private http: HttpClient,private router: Router ) { } 
   
   getBookCategory(): Observable<BookCategory[]> {
     return this.http.get<BookCategory[]>(this.bookCategoryServerUrl)
@@ -62,8 +63,8 @@ export class BookCategoryService {
     return this.http.delete<BookCategory>(url, { headers: headers })
       .pipe(
         tap(data => console.log('deleteProduct: ' + id)),
-        catchError(this.handleError)
-      );
+       catchError(err=>this.handleErrorInDelete(err,"/bookCategory")
+       ));
   }
 
 
@@ -81,6 +82,17 @@ export class BookCategoryService {
     }
     console.error(err);
     return throwError(errorMessage);
+  }
+  private handleErrorInDelete(err:any,url:string): Observable<never> {
+    if(err.status==404)
+        {
+          console.error(err);
+          this.router.navigate([url]);
+          return empty();
+        }
+    else
+         return this.handleError(err);
+      
   }
 
   private initializeObject(): BookCategory {

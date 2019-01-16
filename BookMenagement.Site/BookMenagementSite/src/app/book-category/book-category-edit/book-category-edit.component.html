@@ -79,7 +79,9 @@
                   style="width:80px"
                   type="button"
                   title="Delete this Category"
-                  (click)="deleteCategory()">
+                  (click)="deleteCategory()"
+                  [disabled]="!(this.category?.id>0)"
+                  >
             Delete
           </button>
         </div>
