@@ -64,9 +64,9 @@ namespace BookMenagement.BLL
             {
                 throw new ArgumentNullException();
             }
-            if (sc.Id != 0)
+            if (sc.Id == 0)
             {
-                throw new ArgumentException("Id cant be provided in creation");
+                throw new ArgumentException("Id is required field");
             }
             if (sc.IsDefault && _repository.Any(a => a.IsDefault))
             {

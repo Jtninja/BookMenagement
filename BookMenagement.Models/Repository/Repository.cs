@@ -21,7 +21,7 @@ namespace BookMenagement.DAL.Repository
             dbSet = db.Set<T>();
         }
 
-        public IEnumerable<T> GetAll()
+        public List<T> GetAll()
         {
             return dbSet.ToList();
         }
@@ -46,17 +46,6 @@ namespace BookMenagement.DAL.Repository
         {
             db.SaveChanges();
         }
-        //protected virtual void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        if (this.db != null)
-        //        {
-        //            this.db.Dispose();
-        //            this.db = null;
-        //        }
-        //    }
-        //}
         public void Dispose()
         {
             if (this.db != null)
