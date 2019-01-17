@@ -4,6 +4,7 @@ using BookMenagement.DAL.Model;
 using BookMenagement.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
@@ -22,13 +23,24 @@ namespace BookMenagement.BLL
         #endregion
 
         #region Queries
-        public bool Any(Expression<Func<PersonModel, bool>> predicate)
+        public bool Any(string name, string surname)
         {
-            throw new NotImplementedException();
+            return _repository.Any(a => a.Name == name && a.Surname == surname);
         }
-        public PersonModel FirstOrDefault(Expression<Func<PersonModel, bool>> predicate)
+
+        public bool Any(int id)
         {
-            throw new NotImplementedException();
+            return _repository.Any(a => a.Id==id);
+        }
+        public PersonModel FirstOrDefaultByData(string name, string surname)
+        {
+            var model= _repository.Where(a => a.Name == name && a.Surname == surname).FirstOrDefault();
+
+            if (model!=null)
+            {
+                return Parse(model);
+            }
+            return null;
         }
         #endregion
 
@@ -48,21 +60,42 @@ namespace BookMenagement.BLL
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            if (id == 0)
+            {
+                throw new ArgumentNullException();
+            }
+            _repository.Delete(id);
+            _repository.Save();
         }
         public List<PersonModel> GetAll()
         {
-            throw new NotImplementedException();
+            return _repository.GetAll().Select(Parse).ToList();
         }
 
         public PersonModel GetById(int id)
         {
-            throw new NotImplementedException();
+            if (id == 0)
+            {
+                throw new ArgumentNullException();
+            }
+            var model = _repository.GetById(id);
+            if (model != null)
+            {
+                return Parse(model);
+            }
+            return null;
         }
 
         public void Update(PersonModel sc)
         {
-            throw new NotImplementedException();
+            if (sc == null||sc.Id==0)
+            {
+                throw new ArgumentNullException();
+            }
+            var model = Parse(sc);
+            model.Id = sc.Id;
+            _repository.Update(model);
+            _repository.Save();
         }
         #endregion
         #region Helpers
@@ -84,6 +117,8 @@ namespace BookMenagement.BLL
                 Id = sc.Id
             };
         }
+
+        
         #endregion
 
     }

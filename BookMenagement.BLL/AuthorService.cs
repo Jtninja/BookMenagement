@@ -25,11 +25,8 @@ namespace BookMenagement.BLL
         #region CRUD
         public void Create(AuthorModel sc)
         {
-            if (sc == null)
-            {
-                throw new ArgumentNullException();
-            }
-            if (sc.Person == null)
+            if (sc == null|| sc.Person == null)
+                
             {
                 throw new ArgumentNullException();
             }
@@ -109,16 +106,16 @@ namespace BookMenagement.BLL
             if (sc.PersonId == 0)
             {
 
-                if (!personService.Any(a => a.Name == sc.Person.Name && a.Surname == sc.Person.Surname))
+                if (!personService.Any(sc.Person.Name, sc.Person.Surname))
                 {
                     personService.Create(sc.Person);
                 }
-                sc.Person = personService.FirstOrDefault(a => a.Name == sc.Person.Name && a.Surname == sc.Person.Surname);
+                sc.Person = personService.FirstOrDefaultByData(sc.Person.Name ,sc.Person.Surname);
                 sc.PersonId = sc.Person.Id;
             }
             else
             {
-                if (!personService.Any(a => a.Id == sc.PersonId))
+                if (!personService.Any(sc.PersonId))
                 {
                     throw new ArgumentException("Person info provided couldnt be loaded");
                 }
