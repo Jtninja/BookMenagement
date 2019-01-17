@@ -5,7 +5,7 @@ namespace BookMenagement.Bll.Interfaces
 {
     public interface ICurrencyService
     {
-        List<CurrencyModel> GetAll();
+        IEnumerable<CurrencyModel> GetAll();
         CurrencyModel GetById(int id);
         void Create(CurrencyModel sc);
         void Update(CurrencyModel sc);

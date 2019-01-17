@@ -14,13 +14,17 @@ namespace BookMenagement.Api.Controllers
     [Route("api/BookCategory")]
     public class BookCategoryController : Controller
     {
+        #region fields & ctr
         private readonly IBookCategoryService _service;
 
         public BookCategoryController(IBookCategoryService service)
         {
             _service = service;
         }
+        #endregion
 
+        #region CRUD
+      
         [HttpGet]
         public IActionResult Get()
         {
@@ -35,6 +39,7 @@ namespace BookMenagement.Api.Controllers
                 return BadRequest();
             }
         }
+
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -83,6 +88,7 @@ namespace BookMenagement.Api.Controllers
                 return BadRequest();
             }
         }
+
         [HttpPut]
         public IActionResult Update([FromBody]BookCategoryModel model)
         {
@@ -98,5 +104,6 @@ namespace BookMenagement.Api.Controllers
             }
         }
 
+        #endregion
     }
 }

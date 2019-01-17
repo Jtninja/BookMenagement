@@ -33,6 +33,9 @@ namespace BookMenagement
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             //services
             services.AddTransient<IBookCategoryService, BookCategoryService>();
+            services.AddTransient<IAuthorService, AuthorService>();
+            services.AddTransient<IPersonService, PersonService>();
+            services.AddTransient<ICurrencyService, CurrencyService>();
             
 
             services.AddMvc();

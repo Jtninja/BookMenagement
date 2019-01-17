@@ -11,7 +11,7 @@ namespace BookMenagement.DAL.Interfaces
         T GetById(object id);
         void Insert(T obj);
         void Update(T obj);
-        void Delete(Object id);
+        void Delete(object id);
         void Save();
 
         IQueryable<T> Where(Expression<Func<T, bool>> predicate);
