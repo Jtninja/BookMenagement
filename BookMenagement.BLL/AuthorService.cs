@@ -25,8 +25,8 @@ namespace BookMenagement.BLL
         #region CRUD
         public void Create(AuthorModel sc)
         {
-            if (sc == null|| sc.Person == null)
-                
+            if (sc == null || sc.Person == null)
+
             {
                 throw new ArgumentNullException();
             }
@@ -35,7 +35,7 @@ namespace BookMenagement.BLL
                 throw new ArgumentNullException("Id cant be !=0 ");
             }
             HandlePerson(sc);
-            Author model = Parse(sc);
+            Author model = Parser.Parser.Parse(sc);
 
             _authorRepository.Insert(model);
             _authorRepository.Save();
@@ -48,7 +48,7 @@ namespace BookMenagement.BLL
             }
             _authorRepository.Delete(id);
             _authorRepository.Save();
-        }      
+        }
         public void Update(AuthorModel sc)
         {
             if (sc == null)
@@ -59,13 +59,13 @@ namespace BookMenagement.BLL
             {
                 throw new ArgumentNullException();
             }
-            if (sc.Id==0)
+            if (sc.Id == 0)
             {
                 throw new ArgumentNullException();
             }
             HandlePerson(sc);
 
-            var model = Parse(sc);
+            var model = Parser.Parser.Parse(sc);
             model.Id = sc.Id;
 
             _authorRepository.Update(model);
@@ -74,7 +74,7 @@ namespace BookMenagement.BLL
         public List<AuthorModel> GetAll()
         {
             return _authorRepository.GetAll()
-                             .Select(a => Parse(a))
+                             .Select(a => Parser.Parser.Parse(a))
                              .ToList();
         }
         public AuthorModel GetById(int id)
@@ -84,23 +84,12 @@ namespace BookMenagement.BLL
                 throw new ArgumentNullException("Id cant be 0 ");
             }
             var model = _authorRepository.GetById(id);
-            if (model != null)
-            {
-                return Parse(model);
-            }
-            return null;
+            return Parser.Parser.Parse(model);
         }
         #endregion
-        
+
         #region Helpers
-        private Author Parse(AuthorModel sc)
-        {
-            return new Author
-            {
-                ArtistName = sc.ArtistName,
-                PersonId = sc.PersonId
-            };
-        }
+
         private void HandlePerson(AuthorModel sc)
         {
             if (sc.PersonId == 0)
@@ -110,7 +99,7 @@ namespace BookMenagement.BLL
                 {
                     personService.Create(sc.Person);
                 }
-                sc.Person = personService.FirstOrDefaultByData(sc.Person.Name ,sc.Person.Surname);
+                sc.Person = personService.FirstOrDefaultByData(sc.Person.Name, sc.Person.Surname);
                 sc.PersonId = sc.Person.Id;
             }
             else
@@ -120,22 +109,6 @@ namespace BookMenagement.BLL
                     throw new ArgumentException("Person info provided couldnt be loaded");
                 }
             }
-        }
-        private AuthorModel Parse(Author sc)
-        {
-            var author = new AuthorModel() { Person = new PersonModel() };
-            if (sc != null)
-            {
-                author.Id = sc.Id;
-                author.ArtistName = sc.ArtistName;
-                author.PersonId = sc.PersonId;
-                author.Person.Id = sc?.Person?.Id ?? 0;
-                author.Person.Name = sc?.Person?.Name;
-                author.Person.Surname = sc?.Person?.Surname;
-
-
-            }
-            return author;
         }
         #endregion
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace BookMenagement.DAL.Model
@@ -10,5 +11,6 @@ namespace BookMenagement.DAL.Model
         public decimal TotalAmount { get; set; }
         public DateTime CreatedTime { get; set; }
         public virtual Person Costumer  { get; set; }
+        public virtual List<RecieptLine> RecieptLines { get; set; }
     }
 }

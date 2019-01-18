@@ -12,5 +12,8 @@ namespace BookMenagement.DAL.Model
   
         [StringLength(150)]
         public string Surname { get; set; }
+        [Required]
+        [StringLength(30)]
+        public string PersonalNr { get; set; }
     }
 }

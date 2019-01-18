@@ -17,6 +17,8 @@ namespace BookMenagement.DAL.Model
         public virtual Currency Currency { get; set; }
         public virtual BookCategory BookCategory { get; set; }
         public virtual Author Author { get; set; }
-
+        public int AuthorId { get; set; }
+        public int BookCategoryId { get; set; }
+        public int CurrencyId { get; set; }
     }
 }

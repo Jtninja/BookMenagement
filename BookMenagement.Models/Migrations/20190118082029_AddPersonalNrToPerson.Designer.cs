@@ -4,14 +4,16 @@ using BookMenagement.DAL.DBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookMenagement.DAL.Migrations
 {
     [DbContext(typeof(BookMenagementContext))]
-    partial class BookMenagementContextModelSnapshot : ModelSnapshot
+    [Migration("20190118082029_AddPersonalNrToPerson")]
+    partial class AddPersonalNrToPerson
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

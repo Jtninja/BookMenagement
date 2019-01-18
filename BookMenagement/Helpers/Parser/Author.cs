@@ -29,7 +29,8 @@ namespace BookMenagement.Api.Helpers
             {
                 Id = source.PersonId,
                 Name = source.PersonName,
-                Surname = source.PersonSurname
+                Surname = source.PersonSurname,
+                PersonalNr=source.PersonPersonalNr
             };
         }
 
@@ -44,7 +45,8 @@ namespace BookMenagement.Api.Helpers
                 ArtistName = source.ArtistName,
                 PersonId = source.PersonId,
                 PersonName = source.Person?.Name,
-                PersonSurname = source.Person?.Surname
+                PersonSurname = source.Person?.Surname,
+                PersonPersonalNr=source.Person?.PersonalNr
             };
 
             return model;
