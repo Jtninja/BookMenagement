@@ -35,5 +35,21 @@ namespace BookMenagement.Api.Helpers
             };
             return model;
         }
+
+        //public static CurrencyResponse Parse(CurrencyModel source)
+        //{
+        //    if (source == null)
+        //        return null;
+        //    var model = new CurrencyResponse
+        //    {
+        //        Code = source.Code,
+        //        DefaultRatio = source.DefaultRatio,
+        //        Id = source.Id,
+        //        IsDefault = source.IsDefault,
+        //        Name = source.Name,
+        //        Symbol = source.Symbol
+        //    };
+        //    return model;
+        //}
     }
 }

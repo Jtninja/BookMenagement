@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { BookCategoryService } from '../book-category.service';
-import { BookCategory } from '../book-category';
+import { BookCategoryService } from 'src/app/services/book-category.service';
+import { BookCategory } from '../../models/book-category';
 
 
 @Component({

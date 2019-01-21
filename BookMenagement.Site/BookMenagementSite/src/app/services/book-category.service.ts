@@ -4,9 +4,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError, never, empty } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 
-import {BookCategory} from './book-category'
+
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { BookCategory } from '../models/book-category';
 
 
 @Injectable({

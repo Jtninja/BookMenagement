@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { BookCategoryModule } from './book-category/book-category.module';
+import { AuthorModule } from './author/author.module';
+
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import { BookCategoryModule } from './book-category/book-category.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BookCategoryModule
+    BookCategoryModule,
+    AuthorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
