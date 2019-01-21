@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTO\BookCategory\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
