@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BookCategoryService } from '../book-category.service';
-import { BookCategory } from '../book-category';
+
+import { BookCategory } from 'src/app/models/book-category';
+import { BookCategoryService } from 'src/app/services/book-category.service';
 
 
 @Component({

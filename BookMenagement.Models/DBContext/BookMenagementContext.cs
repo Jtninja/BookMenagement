@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using BookMenagement.DAL.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Proxies;
 
 namespace BookMenagement.DAL.DBContext
 {
@@ -19,9 +20,11 @@ namespace BookMenagement.DAL.DBContext
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(
-                "Server=.\\;Initial Catalog=BookMenagement;Integrated Security=True;Trusted_Connection=True");
-            // base.OnConfiguring(optionsBuilder);
+            optionsBuilder
+                .UseLazyLoadingProxies()
+                .UseSqlServer("Server=.\\;Initial Catalog=BookMenagement;Integrated Security=True;Trusted_Connection=True")
+                ;
+          
         }
     }
 }

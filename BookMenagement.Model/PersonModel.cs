@@ -12,5 +12,8 @@ namespace BookMenagement.Model
 
         [StringLength(150)]
         public string Surname { get; set; }
+        [StringLength(30)]
+        [Required]
+        public string PersonalNr { get; set; }
     }
 }

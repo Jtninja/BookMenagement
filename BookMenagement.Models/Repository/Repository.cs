@@ -10,7 +10,7 @@ using System.Linq.Expressions;
 
 namespace BookMenagement.DAL.Repository
 {
-    public class Repository<T> : IRepository<T>,IDisposable where T : class
+    public class Repository<T> : IRepository<T>, IDisposable where T : class
     {
         private BookMenagementContext db;
         private DbSet<T> dbSet;
@@ -21,7 +21,7 @@ namespace BookMenagement.DAL.Repository
             dbSet = db.Set<T>();
         }
 
-        public IEnumerable<T> GetAll()
+        public List<T> GetAll()
         {
             return dbSet.ToList();
         }
@@ -46,17 +46,6 @@ namespace BookMenagement.DAL.Repository
         {
             db.SaveChanges();
         }
-        //protected virtual void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        if (this.db != null)
-        //        {
-        //            this.db.Dispose();
-        //            this.db = null;
-        //        }
-        //    }
-        //}
         public void Dispose()
         {
             if (this.db != null)
@@ -65,19 +54,13 @@ namespace BookMenagement.DAL.Repository
                 this.db = null;
             }
         }
-
-        public IQueryable<T> where(Expression<Func<T,bool>> predicate)
-        {
-            return this.dbSet.Where(predicate);
-        }
         public bool Any(Expression<Func<T, bool>> predicate)
         {
             return this.dbSet.Any(predicate);
         }
-
         public IQueryable<T> Where(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return this.dbSet.Where(predicate);
         }
     }
 }

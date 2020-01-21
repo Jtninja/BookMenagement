@@ -8,11 +8,14 @@ namespace BookMenagement.Bll.Interfaces
     public interface IPersonService
     {
         List<PersonModel> GetAll();
-        bool Any(Expression<Func<PersonModel, bool>> predicate);
-        PersonModel FirstOrDefault(Expression<Func<PersonModel, bool>> predicate);
+
         PersonModel GetById(int id);
         void Create(PersonModel sc);
         void Update(PersonModel sc);
         void Delete(int id);
+
+        bool Any(string name, string surname);
+        bool Any(int id);
+        PersonModel FirstOrDefaultByData(string name, string surname);
     }
 }

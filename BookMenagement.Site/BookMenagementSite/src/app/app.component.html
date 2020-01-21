@@ -8,12 +8,29 @@
               <li class='nav-item'><a class='nav-link' routerLinkActive='active'
                     [routerLink]="['/welcome']">Home</a>
               </li>
-              <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}"
-                    [routerLink]="['/bookCategory']"> Book Category List</a>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Category
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}"
+                      [routerLink]="['/bookCategory']"> List</a>
+                      <a class='dropdown-item' routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}"
+                        [routerLink]="['/bookCategory/0/edit']">Add</a>
+                    </div>
               </li>
-              <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}"
-                    [routerLink]="['/bookCategory/0/edit']">Add Book Category</a>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Author
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}"
+                      [routerLink]="['/author']"> List</a>
+                      <a class='dropdown-item' routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}"
+                        [routerLink]="['/author/0/edit']">Add</a>
+                    </div>
               </li>
+             
             </ul>
           </nav>
     </h1>

@@ -15,7 +15,7 @@ namespace BookMenagement.DAL.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.0-rtm-35687")
+                .HasAnnotation("ProductVersion", "2.2.1-servicing-10028")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -45,11 +45,11 @@ namespace BookMenagement.DAL.Migrations
 
                     b.Property<decimal>("Amount");
 
-                    b.Property<int?>("AuthorId");
+                    b.Property<int>("AuthorId");
 
-                    b.Property<int?>("BookCategoryId");
+                    b.Property<int>("BookCategoryId");
 
-                    b.Property<int?>("CurrencyId");
+                    b.Property<int>("CurrencyId");
 
                     b.Property<string>("Description")
                         .HasMaxLength(500);
@@ -128,6 +128,10 @@ namespace BookMenagement.DAL.Migrations
                         .IsRequired()
                         .HasMaxLength(150);
 
+                    b.Property<string>("PersonalNr")
+                        .IsRequired()
+                        .HasMaxLength(30);
+
                     b.Property<string>("Surname")
                         .HasMaxLength(150);
 
@@ -142,15 +146,19 @@ namespace BookMenagement.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CostumerId");
+                    b.Property<int>("CostumerId");
 
                     b.Property<DateTime>("CreatedTime");
+
+                    b.Property<int>("CurrencyId");
 
                     b.Property<decimal>("TotalAmount");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CostumerId");
+
+                    b.HasIndex("CurrencyId");
 
                     b.ToTable("RecieptHeader");
                 });
@@ -161,19 +169,19 @@ namespace BookMenagement.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CurrencyId");
-
                     b.Property<int>("LineNo");
 
                     b.Property<decimal>("Price");
 
-                    b.Property<int>("ProductIdId");
+                    b.Property<int>("ProductId");
+
+                    b.Property<int?>("RecieptHeaderId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CurrencyId");
+                    b.HasIndex("ProductId");
 
-                    b.HasIndex("ProductIdId");
+                    b.HasIndex("RecieptHeaderId");
 
                     b.ToTable("RecieptLine");
                 });
@@ -190,35 +198,43 @@ namespace BookMenagement.DAL.Migrations
                 {
                     b.HasOne("BookMenagement.DAL.Model.Author", "Author")
                         .WithMany()
-                        .HasForeignKey("AuthorId");
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("BookMenagement.DAL.Model.BookCategory", "BookCategory")
                         .WithMany()
-                        .HasForeignKey("BookCategoryId");
+                        .HasForeignKey("BookCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("BookMenagement.DAL.Model.Currency", "Currency")
                         .WithMany()
-                        .HasForeignKey("CurrencyId");
+                        .HasForeignKey("CurrencyId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("BookMenagement.DAL.Model.RecieptHeader", b =>
                 {
                     b.HasOne("BookMenagement.DAL.Model.Person", "Costumer")
                         .WithMany()
-                        .HasForeignKey("CostumerId");
-                });
+                        .HasForeignKey("CostumerId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity("BookMenagement.DAL.Model.RecieptLine", b =>
-                {
                     b.HasOne("BookMenagement.DAL.Model.Currency", "Currency")
                         .WithMany()
                         .HasForeignKey("CurrencyId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
 
-                    b.HasOne("BookMenagement.DAL.Model.Book", "ProductId")
+            modelBuilder.Entity("BookMenagement.DAL.Model.RecieptLine", b =>
+                {
+                    b.HasOne("BookMenagement.DAL.Model.Book", "Product")
                         .WithMany()
-                        .HasForeignKey("ProductIdId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BookMenagement.DAL.Model.RecieptHeader")
+                        .WithMany("RecieptLines")
+                        .HasForeignKey("RecieptHeaderId");
                 });
 #pragma warning restore 612, 618
         }

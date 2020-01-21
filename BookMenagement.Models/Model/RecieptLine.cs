@@ -8,10 +8,10 @@ namespace BookMenagement.DAL.Model
         public int Id { get; set; }
         public int LineNo { get; set; }
         [Required]
-        public virtual Book ProductId { get; set; }
+        public virtual Book Product { get; set; }
+        public int ProductId { get; set; }
         [Required]
         public decimal Price { get; set; }
-        [Required]
-        public virtual Currency Currency { get; set; }
+        public int RecieptHeaderId { get; set; }
     }
 }

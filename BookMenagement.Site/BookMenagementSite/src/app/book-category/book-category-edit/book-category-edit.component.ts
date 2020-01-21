@@ -2,8 +2,8 @@ import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { BookCategory, BookCategoryModel } from '../book-category';
-import { BookCategoryService } from '../book-category.service';
+import { BookCategory, BookCategoryModel } from '../../models/book-category';
+import { BookCategoryService } from 'src/app/services/book-category.service';
 
 @Component({
   selector: 'app-book-category-edit',

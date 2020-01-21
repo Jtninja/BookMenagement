@@ -9,10 +9,10 @@ namespace BookMenagement.Model
         public int Id { get; set; }
         public int LineNo { get; set; }
         [Required]
-        public  BookModel ProductId { get; set; }
+        public  BookModel Product { get; set; }
+        public int ProductId { get; set; }
         [Required]
         public decimal Price { get; set; }
-        [Required]
-        public  CurrencyModel Currency { get; set; }
+        public int RecieptHeaderId { get; set; }
     }
 }

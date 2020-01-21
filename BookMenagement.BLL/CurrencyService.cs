@@ -35,14 +35,8 @@ namespace BookMenagement.BLL
                 throw new ArgumentException("IsDefault cant be checked,we already have a default currency");
             }
 
-            var model = new Currency
-            {
-                Code = sc.Code,
-                Name = sc.Name,
-                DefaultRatio = sc.DefaultRatio,
-                IsDefault = sc.IsDefault,
-                Symbol = sc.Symbol
-            };
+            var model = Parser.Parser.Parse(sc);
+
 
             _repository.Insert(model);
             _repository.Save();
@@ -64,23 +58,16 @@ namespace BookMenagement.BLL
             {
                 throw new ArgumentNullException();
             }
-            if (sc.Id != 0)
+            if (sc.Id == 0)
             {
-                throw new ArgumentException("Id cant be provided in creation");
+                throw new ArgumentException("Id is required field");
             }
             if (sc.IsDefault && _repository.Any(a => a.IsDefault))
             {
                 throw new ArgumentException("IsDefault cant be checked,we already have a default currency");
             }
 
-            var model = new Currency
-            {
-                Code = sc.Code,
-                Name = sc.Name,
-                DefaultRatio = sc.DefaultRatio,
-                IsDefault = sc.IsDefault,
-                Symbol = sc.Symbol
-            };
+            var model = Parser.Parser.Parse(sc);
             model.Id = sc.Id;
             _repository.Update(model);
             _repository.Save();
@@ -88,15 +75,7 @@ namespace BookMenagement.BLL
         public List<CurrencyModel> GetAll()
         {
             return _repository.GetAll()
-                              .Select(a => new CurrencyModel
-                              {
-                                  DefaultRatio = a.DefaultRatio,
-                                  Code = a.Code,
-                                  Id = a.Id,
-                                  IsDefault = a.IsDefault,
-                                  Name = a.Name,
-                                  Symbol = a.Symbol
-                              }).ToList();
+                              .Select(a => Parser.Parser.Parse(a)).ToList();
         }
 
         public CurrencyModel GetById(int id)
@@ -106,22 +85,9 @@ namespace BookMenagement.BLL
                 throw new ArgumentException("Id cant be 0");
             }
             var model = _repository.GetById(id);
-            if (model != null)
-            {
-                return new CurrencyModel
-                {
-                    DefaultRatio = model.DefaultRatio,
-                    Code = model.Code,
-                    Id = model.Id,
-                    IsDefault = model.IsDefault,
-                    Name = model.Name,
-                    Symbol = model.Symbol
-                };
-            }
-            return null;
-
+            return Parser.Parser.Parse(model);
         }
         #endregion
-        
+
     }
 }

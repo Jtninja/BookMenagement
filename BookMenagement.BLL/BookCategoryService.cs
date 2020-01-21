@@ -29,7 +29,7 @@ namespace BookMenagement.BLL
             {
                 throw new ArgumentException("Id cant be provided in creation");
             }
-            var model = new BookCategory { Code = sc.Code, Name = sc.Name };
+            var model = Parser.Parser.Parse(sc);
 
             _repository.Insert(model);
             _repository.Save();
@@ -51,28 +51,18 @@ namespace BookMenagement.BLL
         {
             return _repository.GetAll()
                               .Select(a =>
-                                 new BookCategoryModel
-                                 {
-                                     Id = a.Id,
-                                     Code = a.Code,
-                                     Name = a.Name
-                                 }).ToList();
+                                Parser.Parser.Parse(a)).ToList();
         }
 
         public BookCategoryModel GetById(int id)
         {
-            var model = _repository.GetById(id);
-
-            if (model != null)
+            if (id == 0)
             {
-                return new BookCategoryModel
-                {
-                    Id = model.Id,
-                    Code = model.Code,
-                    Name = model.Name
-                };
+                throw new ArgumentNullException("Id cant be 0");
             }
-            return null;
+            var model = _repository.GetById(id);
+            return Parser.Parser.Parse(model);
+
         }
 
         public void Update(BookCategoryModel sc)
@@ -87,12 +77,8 @@ namespace BookMenagement.BLL
                 throw new ArgumentNullException("Id cant be null");
             }
 
-            var model = new BookCategory
-            {
-                Id = sc.Id,
-                Code = sc.Code,
-                Name = sc.Name
-            };
+            var model = Parser.Parser.Parse(sc);
+            model.Id = sc.Id;
             _repository.Update(model);
             _repository.Save();
         }
