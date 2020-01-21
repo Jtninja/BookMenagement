@@ -75,5 +75,9 @@ namespace BookMenagement.DAL.Repository
             return this.dbSet.Any(predicate);
         }
 
+        public IQueryable<T> Where(Expression<Func<T, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
